@@ -8,6 +8,7 @@ import { AuthRouter } from './routers/Auth'
 import TokenService from "./services/Token";
 import { EventsRouter } from "./routers/Events";
 import { JournalRouter } from "./routers/Journal";
+import { ReferencesRouter } from "./routers/References";
 
 dotenv.config()
 
@@ -34,6 +35,8 @@ app.use('/auth', AuthRouter)
 app.use('/calendar', EventsRouter)
 // Журнал
 app.use('/journal', JournalRouter)
+// Справочники
+app.use('/references', ReferencesRouter)
 
 // app.use('/resource/protected', TokenService.checkAccess, (req, res) => {
 //     return res.status(200).json("Добро пожаловать")

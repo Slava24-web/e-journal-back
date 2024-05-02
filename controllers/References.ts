@@ -1,0 +1,27 @@
+import { Request, Response } from "express";
+import ErrorsUtils from "../utils/Errors";
+import ReferencesService from "../services/ReferencesService";
+
+class ReferencesController {
+    static async getAllSpecs(req: Request, res: Response) {
+        try {
+            const specs = await ReferencesService.getAllSpecs()
+            console.log("Успешное получение списка специальностей")
+            return res.status(200).json(specs)
+        } catch (err) {
+            return ErrorsUtils.catchError(res, err);
+        }
+    }
+
+    static async getAllLevels(req: Request, res: Response) {
+        try {
+            const levels = await ReferencesService.getAllLevels()
+            console.log("Успешное получение списка уровней обучения")
+            return res.status(200).json(levels)
+        } catch (err) {
+            return ErrorsUtils.catchError(res, err);
+        }
+    }
+}
+
+export default ReferencesController
