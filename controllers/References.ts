@@ -22,6 +22,16 @@ class ReferencesController {
             return ErrorsUtils.catchError(res, err);
         }
     }
+
+    static async getAllLessonTypes(req: Request, res: Response) {
+        try {
+            const types = await ReferencesService.getAllLessonTypes()
+            console.log("Успешное получение списка типов занятий")
+            return res.status(200).json(types)
+        } catch (err) {
+            return ErrorsUtils.catchError(res, err);
+        }
+    }
 }
 
 export default ReferencesController

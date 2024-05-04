@@ -15,7 +15,7 @@ class EventsRepository {
         } = eventInfo
 
         const response = await pool.query(
-            'INSERT INTO events(user_id, group_id, lesson_type_id, title, start_datetime, end_datetime, room, description) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)',
+            'INSERT INTO events(user_id, group_id, lesson_type_id, title, start_datetime, end_datetime, room, description) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *',
             [user_id, group_id, lesson_type_id, title, start_datetime, end_datetime, room ?? '', description ?? '']
         )
 

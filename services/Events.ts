@@ -20,7 +20,7 @@ class EventsService {
             await EventsRepository.updateEvent(event)
         }
 
-        return await this.getAllEvents(events[0].user_id)
+        return await this.getAllEvents(events[0]?.user_id)
     }
 
     static async getAllEvents(user_id: number) {
