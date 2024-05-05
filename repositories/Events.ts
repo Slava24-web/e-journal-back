@@ -52,7 +52,7 @@ class EventsRepository {
 
     static async getAllEvents(user_id: number) {
         const response = await pool.query('SELECT * FROM events WHERE user_id = $1', [user_id])
-        return response.rows.sort((a, b) => b.start_datetime - a.start_datetime)
+        return response.rows.sort((a, b) => a.id - b.id)
     }
 }
 

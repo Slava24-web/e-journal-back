@@ -55,6 +55,7 @@ CREATE TABLE events(
     description VARCHAR(512)
 );
 
+-- Создана, заполнена
 CREATE TABLE students(
     id serial primary key,
     group_id INT NOT NULL references groups(id) on delete cascade,
@@ -67,10 +68,11 @@ CREATE TABLE disciplines(
     name VARCHAR(256) NOT NULL
 );
 
+-- Создана
 CREATE TABLE marks(
     id serial primary key,
     student_id INT NOT NULL references students(id) on delete cascade,
-    discipline_id INT NOT NULL references disciplines(id) on delete cascade,
+--     discipline_id INT NOT NULL references disciplines(id) on delete cascade,
     event_id INT NOT NULL references events(id) on delete cascade,
     mark VARCHAR(3),
     note VARCHAR(128),

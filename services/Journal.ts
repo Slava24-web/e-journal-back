@@ -1,6 +1,9 @@
 import { StudentInfo } from "../models/Student";
 import GroupsRepository from "../repositories/Groups";
 import StudentsRepository from "../repositories/Students";
+import { MarkInfo } from "../models/Marks";
+import MarksRepository from "../repositories/Marks";
+import { Conflict } from "../utils/Errors";
 
 const WordExtractor = require("word-extractor");
 
@@ -75,6 +78,20 @@ class JournalService {
             }
             return result
         }, [])
+    }
+
+    static async addMark(markInfo: MarkInfo) {
+        const hasIdenticalMark = await MarksRepository.getMarksByEventIdAndStudentId(markInfo.event_id, markInfo.student_id)
+
+        if (hasIdenticalMark) {
+            throw new Conflict('У данного студента уже есть оценка на этом занятии!')
+        }
+
+        return await MarksRepository.addMark(markInfo)
+    }
+
+    static async getMarksByEventId(event_id: number) {
+        return await MarksRepository.getMarksByEventId(event_id)
     }
 }
 

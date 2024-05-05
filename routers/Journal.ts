@@ -9,4 +9,8 @@ router.get('/group/all', JournalController.getAllGroups)
 
 router.get('/students', JournalController.getStudentsByGroupId)
 
+router.post('/marks/add', JournalController.addMark)
+
+router.get('/marks', JournalController.getMarksByEventId)
+
 export { router as JournalRouter }

@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 
 import ErrorsUtils from "../utils/Errors";
 import JournalService from "../services/Journal";
+import { MarkInfo } from "../models/Marks";
 
 class JournalController {
     static async getAllGroups(req: Request, res: Response) {
@@ -36,6 +37,33 @@ class JournalController {
             if (group_id) {
                 const students = await JournalService.getStudentsByGroupId(Number(group_id))
                 return res.status(200).json(students)
+            }
+        } catch (err) {
+            return ErrorsUtils.catchError(res, err)
+        }
+    }
+
+    static async addMark(req: Request, res: Response) {
+        console.log('Добавление оценки студенту ', req.body.markInfo.student_id)
+
+        try {
+            const { markInfo } = req.body
+            const mark = await JournalService.addMark(markInfo)
+            return res.status(200).json({
+                mark
+            })
+        } catch (err) {
+            return ErrorsUtils.catchError(res, err)
+        }
+    }
+
+    static async getMarksByEventId(req: Request, res: Response) {
+        console.log('Получение списка оценок для события с event_id = ', req.query.event_id)
+        try {
+            const event_id = req.query.event_id
+            if (event_id) {
+                const marks = await JournalService.getMarksByEventId(Number(event_id))
+                return res.status(200).json(marks)
             }
         } catch (err) {
             return ErrorsUtils.catchError(res, err)
