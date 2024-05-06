@@ -32,6 +32,16 @@ class ReferencesController {
             return ErrorsUtils.catchError(res, err);
         }
     }
+
+    static async getAllDisciplines(req: Request, res: Response) {
+        try {
+            const disciplines = await ReferencesService.getAllDisciplines()
+            console.log("Успешное получение списка дисциплин")
+            return res.status(200).json(disciplines)
+        } catch (err) {
+            return ErrorsUtils.catchError(res, err);
+        }
+    }
 }
 
 export default ReferencesController

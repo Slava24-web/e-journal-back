@@ -7,7 +7,7 @@ class EventsRepository {
         const {
             group_id,
             lesson_type_id,
-            title,
+            discipline_id,
             start_datetime,
             end_datetime,
             room,
@@ -15,8 +15,8 @@ class EventsRepository {
         } = eventInfo
 
         const response = await pool.query(
-            'INSERT INTO events(user_id, group_id, lesson_type_id, title, start_datetime, end_datetime, room, description) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *',
-            [user_id, group_id, lesson_type_id, title, start_datetime, end_datetime, room ?? '', description ?? '']
+            'INSERT INTO events(user_id, group_id, lesson_type_id, discipline_id, start_datetime, end_datetime, room, description) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *',
+            [user_id, group_id, lesson_type_id, discipline_id, start_datetime, end_datetime, room ?? '', description ?? '']
         )
 
         return response.rows[0]
@@ -27,7 +27,7 @@ class EventsRepository {
             id,
             group_id,
             lesson_type_id,
-            title,
+            discipline_id,
             start_datetime,
             end_datetime,
             room,
@@ -35,8 +35,8 @@ class EventsRepository {
         } = event
 
         const response = await pool.query(
-            'UPDATE events SET group_id = $1, lesson_type_id = $2, title = $3, start_datetime = $4, end_datetime = $5, room = $6, description = $7 WHERE id = $8',
-            [group_id, lesson_type_id, title, start_datetime, end_datetime, room, description, id]
+            'UPDATE events SET group_id = $1, lesson_type_id = $2, discipline_id = $3, start_datetime = $4, end_datetime = $5, room = $6, description = $7 WHERE id = $8',
+            [group_id, lesson_type_id, discipline_id, start_datetime, end_datetime, room, description, id]
         )
 
         return response.rows[0]

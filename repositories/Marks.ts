@@ -3,10 +3,10 @@ import pool from "../db";
 
 class MarksRepository {
     /** Добавление оценки */
-    static async addMark({ student_id, event_id, mark, note }: MarkInfo) {
+    static async addMark({ student_id, event_id, discipline_id, mark, note }: MarkInfo) {
         const response = await pool.query(
-            'INSERT INTO marks (student_id, event_id, mark, note) VALUES ($1, $2, $3, $4) RETURNING *',
-            [student_id, event_id, mark, note]
+            'INSERT INTO marks (student_id, event_id, discipline_id, mark, note) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+            [student_id, event_id, discipline_id, mark, note]
         )
 
         return response.rows[0]

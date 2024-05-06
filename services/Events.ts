@@ -1,6 +1,7 @@
 import { EventInfo, IEvent } from "../models/Events";
 import EventsRepository from "../repositories/Events";
 import { Conflict } from "../utils/Errors";
+import DisciplinesRepository from "../repositories/Disciplines";
 
 class EventsService {
     static async addEvents(events: EventInfo[], user_id: number) {
@@ -11,7 +12,15 @@ class EventsService {
                 throw new Conflict('Такое событие уже существует!')
             }
 
-            await EventsRepository.addEvent(eventInfo, user_id)
+            let discipline_id: number = eventInfo.discipline_id
+
+            if (eventInfo.discipline_name) {
+                const newDiscipline = await DisciplinesRepository.addDiscipline(eventInfo.discipline_name)
+                discipline_id = newDiscipline.id
+                console.log("Создана новая дисциплина: ", eventInfo.discipline_name)
+            }
+
+            await EventsRepository.addEvent({ ...eventInfo, discipline_id }, user_id)
         }
     }
 

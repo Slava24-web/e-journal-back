@@ -48,7 +48,7 @@ CREATE TABLE events(
     group_id INT NOT NULL references groups(id) on delete cascade,
     lesson_type_id INT NOT NULL references lesson_types(id) on delete cascade,
     user_id INT NOT NULL references users(id) on delete cascade,
-    title VARCHAR(100) NOT NULL,
+    discipline_id INT NOT NULL references disciplines(id) on delete cascade,
     start_datetime INT NOT NULL,
     end_datetime INT NOT NULL,
     room VARCHAR(10),
@@ -63,6 +63,7 @@ CREATE TABLE students(
     elder SMALLINT
 );
 
+-- Создана
 CREATE TABLE disciplines(
     id serial primary key,
     name VARCHAR(256) NOT NULL
@@ -72,10 +73,10 @@ CREATE TABLE disciplines(
 CREATE TABLE marks(
     id serial primary key,
     student_id INT NOT NULL references students(id) on delete cascade,
---     discipline_id INT NOT NULL references disciplines(id) on delete cascade,
+    discipline_id INT NOT NULL references disciplines(id) on delete cascade,
     event_id INT NOT NULL references events(id) on delete cascade,
     mark VARCHAR(3),
-    note VARCHAR(128),
+    note VARCHAR(128)
 );
 
 

@@ -9,4 +9,6 @@ router.get('/levels/all', ReferencesController.getAllLevels)
 
 router.get('/lesson_types/all', ReferencesController.getAllLessonTypes)
 
+router.get('/disciplines/all', ReferencesController.getAllDisciplines)
+
 export { router as ReferencesRouter }
