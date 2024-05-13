@@ -1,4 +1,4 @@
-import pool from "../db";
+import pool from "../db.ts";
 import { FingerprintResult } from "../common/models";
 
 class RefreshSessionRepository {

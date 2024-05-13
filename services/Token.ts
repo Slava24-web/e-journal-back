@@ -1,9 +1,9 @@
 import jwt, { Secret } from "jsonwebtoken";
 import dotenv from "dotenv";
 import { Request, Response } from "express"
-import { Forbidden, Unauthorized } from "../utils/Errors";
+import { Forbidden, Unauthorized } from "../utils/Errors.ts";
 import { NextFunction } from "express";
-import { TokenPayloadData } from "../models/User";
+import { TokenPayloadData } from "../models/User.ts";
 
 dotenv.config();
 

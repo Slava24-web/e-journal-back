@@ -1,12 +1,13 @@
-import { MarkInfo } from "../models/Marks";
-import pool from "../db";
+import { IMark, MarkInfo } from "../models/Marks";
+import pool from "../db.ts";
+import { IEvent } from "../models/Events";
 
 class MarksRepository {
     /** Добавление оценки */
-    static async addMark({ student_id, event_id, discipline_id, mark, note }: MarkInfo) {
+    static async addMark({ student_id, event_id, discipline_id, mark, note, is_control, pks }: MarkInfo) {
         const response = await pool.query(
-            'INSERT INTO marks (student_id, event_id, discipline_id, mark, note) VALUES ($1, $2, $3, $4, $5) RETURNING *',
-            [student_id, event_id, discipline_id, mark, note]
+            'INSERT INTO marks (student_id, event_id, discipline_id, mark, note, is_control, pks) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
+            [student_id, event_id, discipline_id, mark, note, is_control, pks]
         )
 
         return response.rows[0]
@@ -31,7 +32,18 @@ class MarksRepository {
             return null
         }
 
-        return Boolean(response.rows)
+        return response.rows
+    }
+
+    static async updateMark(imark: IMark) {
+        const { student_id, event_id, note, is_control, pks } = imark
+
+        const response = await pool.query(
+            'UPDATE marks SET note = $1, is_control = $2, pks = $3 WHERE student_id = $4 AND event_id = $5',
+            [note, is_control ? 1 : 0, pks, student_id, event_id]
+        )
+
+        return response.rows[0]
     }
 }
 

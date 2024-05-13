@@ -1,5 +1,5 @@
 import { Router } from "express";
-import ReferencesController from "../controllers/References";
+import ReferencesController from "../controllers/References.ts";
 
 const router = Router()
 

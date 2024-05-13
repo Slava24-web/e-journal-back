@@ -1,6 +1,6 @@
 import { Request, Response } from "express"
-import ErrorsUtils from "../utils/Errors";
-import EventsService from "../services/Events";
+import ErrorsUtils from "../utils/Errors.ts";
+import EventsService from "../services/Events.ts";
 
 class EventsController {
     /** Добавление события в календарь */

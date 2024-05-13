@@ -1,5 +1,5 @@
 import { StudentInfo } from "../models/Student";
-import pool from "../db";
+import pool from "../db.ts";
 
 class StudentsRepository {
     static async addStudent(studentInfo: StudentInfo) {

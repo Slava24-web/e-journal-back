@@ -1,4 +1,4 @@
-import pool from "../db";
+import pool from "../db.ts";
 
 class SpecsRepository {
     static async getAllSpecs() {

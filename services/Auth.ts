@@ -1,11 +1,11 @@
 import bcrypt from "bcryptjs";
-import TokenService from "./Token";
-import { NotFound, Forbidden, Conflict, Unauthorized } from "../utils/Errors";
-import RefreshSessionRepository from "../repositories/RefreshSession";
-import UserRepository from "../repositories/User";
-import { ACCESS_TOKEN_EXPIRATION } from "../constants";
-import { FingerprintResult } from "../common/models";
-import { TokenPayloadData } from "../models/User";
+import TokenService from "./Token.ts";
+import { NotFound, Forbidden, Conflict, Unauthorized } from "../utils/Errors.ts";
+import RefreshSessionRepository from "../repositories/RefreshSession.ts";
+import UserRepository from "../repositories/User.ts";
+import { ACCESS_TOKEN_EXPIRATION } from "../constants.ts";
+import { FingerprintResult } from "../common/models.ts";
+import { TokenPayloadData } from "../models/User.ts";
 
 class AuthService {
     /**

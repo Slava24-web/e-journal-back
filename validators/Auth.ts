@@ -1,4 +1,4 @@
-import validateRequest from "../utils/ValidateRequest";
+import validateRequest from "../utils/ValidateRequest.ts";
 import * as Yup from "yup";
 import { Request, Response, NextFunction } from "express"
 

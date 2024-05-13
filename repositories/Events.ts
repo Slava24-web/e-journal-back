@@ -1,6 +1,5 @@
 import { EventInfo, IEvent } from "../models/Events";
-import pool from "../db";
-import { Conflict } from "../utils/Errors";
+import pool from "../db.ts";
 
 class EventsRepository {
     static async addEvent(eventInfo: EventInfo, user_id: number){

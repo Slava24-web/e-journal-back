@@ -42,7 +42,7 @@ CREATE TABLE lesson_types(
     name VARCHAR(100) NOT NULL
 );
 
--- Создана
+-- Создана заполнена
 CREATE TABLE events(
     id serial primary key,
     group_id INT NOT NULL references groups(id) on delete cascade,
@@ -63,23 +63,20 @@ CREATE TABLE students(
     elder SMALLINT
 );
 
--- Создана
+-- Создана заполнена
 CREATE TABLE disciplines(
     id serial primary key,
     name VARCHAR(256) NOT NULL
 );
 
--- Создана
+-- Создана заполнена
 CREATE TABLE marks(
     id serial primary key,
     student_id INT NOT NULL references students(id) on delete cascade,
     discipline_id INT NOT NULL references disciplines(id) on delete cascade,
     event_id INT NOT NULL references events(id) on delete cascade,
     mark VARCHAR(3),
-    note VARCHAR(128)
+    note VARCHAR(128),
+    isControl SMALLINT,
+    pks VARCHAR(64)
 );
-
-
-
-select * from users;
-select * from refresh_sessions;

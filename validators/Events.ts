@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import validateRequest from "../utils/ValidateRequest";
+import validateRequest from "../utils/ValidateRequest.ts";
 import * as Yup from "yup";
 
 export const addEventSchema = Yup.object({

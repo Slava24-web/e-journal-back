@@ -1,8 +1,7 @@
 import { Request, Response } from "express";
 
-import ErrorsUtils from "../utils/Errors";
-import JournalService from "../services/Journal";
-import { MarkInfo } from "../models/Marks";
+import ErrorsUtils from "../utils/Errors.ts";
+import JournalService from "../services/Journal.ts";
 
 class JournalController {
     static async getAllGroups(req: Request, res: Response) {
@@ -65,6 +64,16 @@ class JournalController {
                 const marks = await JournalService.getMarksByEventId(Number(event_id))
                 return res.status(200).json(marks)
             }
+        } catch (err) {
+            return ErrorsUtils.catchError(res, err)
+        }
+    }
+
+    static async updateMark(req: Request, res: Response) {
+        try {
+            const { mark } = req.body
+            await JournalService.updateMark(mark)
+            return res.sendStatus(200)
         } catch (err) {
             return ErrorsUtils.catchError(res, err)
         }

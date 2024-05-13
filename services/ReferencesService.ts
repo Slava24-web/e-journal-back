@@ -1,7 +1,7 @@
-import SpecsRepository from "../repositories/Specs";
-import LevelsRepository from "../repositories/Levels";
-import LessonTypesRepository from "../repositories/LessonTypes";
-import DisciplinesRepository from "../repositories/Disciplines";
+import SpecsRepository from "../repositories/Specs.ts";
+import LevelsRepository from "../repositories/Levels.ts";
+import LessonTypesRepository from "../repositories/LessonTypes.ts";
+import DisciplinesRepository from "../repositories/Disciplines.ts";
 
 class ReferencesService {
     static async getAllSpecs() {

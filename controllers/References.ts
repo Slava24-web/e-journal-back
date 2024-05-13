@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import ErrorsUtils from "../utils/Errors";
-import ReferencesService from "../services/ReferencesService";
+import ErrorsUtils from "../utils/Errors.ts";
+import ReferencesService from "../services/ReferencesService.ts";
 
 class ReferencesController {
     static async getAllSpecs(req: Request, res: Response) {

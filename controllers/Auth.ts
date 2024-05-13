@@ -1,8 +1,8 @@
 import { Request, Response } from "express"
 
-import AuthService from "../services/Auth";
-import ErrorsUtils from "../utils/Errors";
-import { COOKIE_SETTINGS } from "../constants";
+import AuthService from "../services/Auth.ts";
+import ErrorsUtils from "../utils/Errors.ts";
+import { COOKIE_SETTINGS } from "../constants.ts";
 
 class AuthController {
     /** Авторизация */

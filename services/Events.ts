@@ -1,7 +1,7 @@
-import { EventInfo, IEvent } from "../models/Events";
-import EventsRepository from "../repositories/Events";
-import { Conflict } from "../utils/Errors";
-import DisciplinesRepository from "../repositories/Disciplines";
+import { EventInfo, IEvent } from "../models/Events.ts";
+import EventsRepository from "../repositories/Events.ts";
+import { Conflict } from "../utils/Errors.ts";
+import DisciplinesRepository from "../repositories/Disciplines.ts";
 
 class EventsService {
     static async addEvents(events: EventInfo[], user_id: number) {

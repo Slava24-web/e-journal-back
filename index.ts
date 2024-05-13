@@ -3,12 +3,15 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser'
 import Fingerprint from 'express-fingerprint'
-const fileUpload = require('express-fileupload');
-import { AuthRouter } from './routers/Auth'
-import TokenService from "./services/Token";
-import { EventsRouter } from "./routers/Events";
-import { JournalRouter } from "./routers/Journal";
-import { ReferencesRouter } from "./routers/References";
+// @ts-ignore
+import express_fileupload from 'express-fileupload'
+const fileUpload = express_fileupload
+import { AuthRouter } from './routers/Auth.ts'
+import TokenService from "./services/Token.ts";
+import { EventsRouter } from "./routers/Events.ts";
+import { JournalRouter } from "./routers/Journal.ts";
+import { ReferencesRouter } from "./routers/References.ts";
+import { GeneratorRouter } from "./routers/Generator.ts";
 
 dotenv.config()
 
@@ -37,6 +40,8 @@ app.use('/calendar', EventsRouter)
 app.use('/journal', JournalRouter)
 // Справочники
 app.use('/references', ReferencesRouter)
+// Генератор заданий
+app.use('/generator', GeneratorRouter)
 
 // app.use('/resource/protected', TokenService.checkAccess, (req, res) => {
 //     return res.status(200).json("Добро пожаловать")

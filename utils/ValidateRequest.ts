@@ -1,4 +1,4 @@
-import ErrorUtils, { Unprocessable } from "./Errors";
+import ErrorUtils, { Unprocessable } from "./Errors.ts";
 import { NextFunction, Request, Response } from "express";
 
 // @ts-ignore

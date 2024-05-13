@@ -1,11 +1,13 @@
-import { StudentInfo } from "../models/Student";
-import GroupsRepository from "../repositories/Groups";
-import StudentsRepository from "../repositories/Students";
-import { MarkInfo } from "../models/Marks";
-import MarksRepository from "../repositories/Marks";
-import { Conflict } from "../utils/Errors";
+import { StudentInfo } from "../models/Student.ts";
+import GroupsRepository from "../repositories/Groups.ts";
+import StudentsRepository from "../repositories/Students.ts";
+import { IMark, MarkInfo } from "../models/Marks.ts";
+import MarksRepository from "../repositories/Marks.ts";
+import { Conflict } from "../utils/Errors.ts";
 
-const WordExtractor = require("word-extractor");
+// @ts-ignore
+import word_extractor from "word-extractor"
+const { WordExtractor } = word_extractor
 
 class JournalService {
     /** Получение всех групп */
@@ -83,7 +85,7 @@ class JournalService {
     static async addMark(markInfo: MarkInfo) {
         const hasIdenticalMark = await MarksRepository.getMarksByEventIdAndStudentId(markInfo.event_id, markInfo.student_id)
 
-        if (hasIdenticalMark) {
+        if (Boolean(hasIdenticalMark)) {
             throw new Conflict('У данного студента уже есть оценка на этом занятии!')
         }
 
@@ -92,6 +94,10 @@ class JournalService {
 
     static async getMarksByEventId(event_id: number) {
         return await MarksRepository.getMarksByEventId(event_id)
+    }
+
+    static async updateMark(mark: IMark) {
+        return await MarksRepository.updateMark(mark)
     }
 }
 

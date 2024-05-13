@@ -1,5 +1,5 @@
-import pool from "../db";
-import { GroupInfo } from "../models/Group";
+import pool from "../db.ts";
+import { GroupInfo } from "../models/Group.ts";
 
 class GroupsRepository {
     /** Получение group_id по номеру группы */
