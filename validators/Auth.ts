@@ -14,8 +14,7 @@ export const signInSchema = Yup.object({
 export const signUpSchema = Yup.object({
     body: Yup.object({
         username: Yup.string()
-            .required("Поле обязательно!")
-            .max(25, "Максимальная длина - 25 символов"),
+            .required("Поле обязательно!"),
         password: Yup.string()
             .required("Поле обязательно!")
             .min(3, "Пароль слишком короткий - минимум 3 символа")

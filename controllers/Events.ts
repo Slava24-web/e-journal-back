@@ -34,6 +34,10 @@ class EventsController {
         }
     }
 
+    static async deleteEvent(req: Request, res: Response) {
+
+    }
+
     /** Получение всех событий календаря по id пользователя */
     static async getAllEvents(req: Request, res: Response) {
         const user_id = Number.parseInt(req.params.user_id, 10)

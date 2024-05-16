@@ -213,7 +213,7 @@ class GeneratorService {
                     ...themesTasksContent,
                 ]);
 
-                // Получаем массив рекомендация для компетенций студента
+                // Получаем массив рекомендаций для компетенций студента
                 const similarDocuments = recommender.getSimilarDocuments(0, 0);
 
                 console.log("similarDocuments", similarDocuments)

@@ -6,8 +6,7 @@ import MarksRepository from "../repositories/Marks.ts";
 import { Conflict } from "../utils/Errors.ts";
 
 // @ts-ignore
-import word_extractor from "word-extractor"
-const { WordExtractor } = word_extractor
+import WordExtractor from "word-extractor"
 
 class JournalService {
     /** Получение всех групп */
